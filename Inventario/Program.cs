@@ -4,7 +4,11 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            ProductoManager prodM = new ProductoManager();
+            prodM.CargarDatos();
+            prodM.CantidadGuardada();
+            //prodM.AgregarListadoProductos();
+            prodM.mostrarListadoProductos();
         }
     }
 }
