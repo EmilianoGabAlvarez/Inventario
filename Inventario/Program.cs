@@ -4,11 +4,13 @@
     {
         static void Main(string[] args)
         {
-            ProductoManager prodM = new ProductoManager();
-            prodM.CargarDatos();
-            prodM.CantidadGuardada();
+            Menu menu = new Menu();
+            menu.menu();
+            // ProductoManager prodM = new ProductoManager();
+            //prodM.CargarDatos();
+            //prodM.CantidadGuardada();
             //prodM.AgregarListadoProductos();
-            prodM.mostrarListadoProductos();
+            //prodM.mostrarListadoProductos();
         }
     }
 }

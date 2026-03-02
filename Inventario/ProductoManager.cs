@@ -46,7 +46,8 @@ namespace Inventario
                     _listaProductos = JsonSerializer.Deserialize<List<Producto>>(jsonString, _options)
                                      ?? new List<Producto>();
 
-                    Console.WriteLine("\n📂 Datos cargados exitosamente desde el JSON");
+                    Console.WriteLine("\n Datos cargados exitosamente desde el JSON");
+                    Console.WriteLine();
                 }
                 else
                 {
@@ -60,14 +61,16 @@ namespace Inventario
             }
         }
 
-        public void CantidadGuardada()
+        public int  CantidadGuardada()
         {
             if (_listaProductos.Count > 0)
             {
                  int num= _listaProductos.Max(p => p.Id);
+            return num;
             }
-            else { Producto.SetContador(0); }
-
+            else { Producto.SetContador(0);
+                return 0;
+            }
         }
         public string AgregarNombre()
         {
