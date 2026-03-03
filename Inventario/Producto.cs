@@ -10,7 +10,6 @@ namespace Inventario
 {
     public class Producto
     {
-        private static int contadorId = 0;
 
 
         public int Id { get;  set; }
@@ -18,10 +17,9 @@ namespace Inventario
         public int stock;
         public decimal precio;  
         public bool estado;
-        public Producto(string nombre, decimal precio, int stock)
+        public Producto(int nuevoid, string nombre, decimal precio, int stock)
         {
-            contadorId++;
-            Id = contadorId;
+            Id = nuevoid;
             Nombre = nombre;
             Precio = precio;
             Stock = stock;
@@ -31,9 +29,9 @@ namespace Inventario
         {
         estado = true;
         }
-        public static void SetContador(int valor)
+        public void SetContador(int valor)
         {
-            contadorId = valor;
+            Id= valor;
         }
         public string Nombre
         {

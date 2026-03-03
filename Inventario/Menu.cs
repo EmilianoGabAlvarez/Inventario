@@ -12,7 +12,7 @@ namespace Inventario
         public void menu()
         {
         ProductoManager prod=new ProductoManager();
-            prod.CargarDatos();
+        prod.CargarDatos();
         int guardados=prod.CantidadGuardada();
             Console.WriteLine($"{guardados} Es la cantidad de productos guardados");
             Console.WriteLine();
@@ -22,7 +22,7 @@ namespace Inventario
                
                 Console.WriteLine(" -- MENU PRINCIPAL -- ");
                 Console.WriteLine();
-                Console.WriteLine("1-  Agregar productos  ");
+                Console.WriteLine("1- Agregar productos  ");
                 Console.WriteLine("2- Mostrar todos los productos");
                 Console.WriteLine();
                 Console.WriteLine("0- Para salir");

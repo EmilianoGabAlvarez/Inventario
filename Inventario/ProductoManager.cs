@@ -68,8 +68,9 @@ namespace Inventario
                  int num= _listaProductos.Max(p => p.Id);
             return num;
             }
-            else { Producto.SetContador(0);
-                return 0;
+            else {
+                int num2 = 0;
+                return num2;
             }
         }
         public string AgregarNombre()
@@ -148,11 +149,20 @@ namespace Inventario
         }
         public void AgregarProducto()
         {
-            int id;
+            int nuevoId;
+            CargarDatos();
+            if (_listaProductos.Count > 0) {
+               nuevoId = _listaProductos.Max(x => x.Id);
+            }
+            else
+            {
+                nuevoId = 1;
+            }
+            int id = (nuevoId + 1);
             string guardaNombre = AgregarNombre();
             decimal guardarPrecio = AgregarPrecio();
             int guardarStock = AgregarStock();
-            Producto prod = new Producto(guardaNombre,guardarPrecio,guardarStock);
+            Producto prod = new Producto(id, guardaNombre,guardarPrecio,guardarStock);
             _listaProductos.Add(prod);
             Console.WriteLine();
             Console.WriteLine("Producto cargado exitosamente");
@@ -163,6 +173,7 @@ namespace Inventario
         public void AgregarListadoProductos()
         {
             int cant = 0;
+            
             while (true)
             {
                 try
