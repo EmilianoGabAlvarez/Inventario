@@ -33,6 +33,8 @@ namespace Inventario
         {
             Id= valor;
         }
+
+
         public string Nombre
         {
             get { return nombre; }

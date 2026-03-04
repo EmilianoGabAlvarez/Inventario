@@ -61,17 +61,15 @@ namespace Inventario
             }
         }
 
-        public int  CantidadGuardada()
+        public int CantidadGuardada()
         {
+            int num = 0;
             if (_listaProductos.Count > 0)
             {
-                 int num= _listaProductos.Max(p => p.Id);
+                num = _listaProductos.Max(p => p.Id);
+            }
+
             return num;
-            }
-            else {
-                int num2 = 0;
-                return num2;
-            }
         }
         public string AgregarNombre()
         {
