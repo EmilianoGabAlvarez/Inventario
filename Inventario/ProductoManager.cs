@@ -219,6 +219,49 @@ namespace Inventario
             }
         }
 
+
+        public void mostrarXProducto(Producto p)
+        {
+            Console.WriteLine("ID: " + p.Id);
+            Console.WriteLine("Nombre: " +p.Nombre);
+            Console.WriteLine("Precio: " +p.Precio);
+            Console.WriteLine("Stock: " + p.Stock);
+            Console.WriteLine();
+        }
+
+        public void mostarProductoPorId()
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("Ingrese el ID del producto a buscar");
+                    int num=int.Parse(Console.ReadLine());
+                    Producto prod=_listaProductos.Find( p=> p.Id==num);
+                    if (num == null)
+                    {
+                        Console.WriteLine("No se encontraron coincidencias con ese numero de ID");
+                        continue;
+                    }
+
+                    else if (num < 0)
+                    {
+                        Console.WriteLine("Debe ingresar un numero mayor a 0");
+                        continue;
+                    }
+                    mostrarXProducto(prod);
+                    break;
+
+                }
+                catch (Exception)
+                {
+
+                    Console.WriteLine("Debe ingresar solo un numero sin letras ni simbolos");
+                    continue;
+                }
+            }
+        }
+
     }
 }
 

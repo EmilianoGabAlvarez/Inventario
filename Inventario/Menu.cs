@@ -22,8 +22,11 @@ namespace Inventario
                
                 Console.WriteLine(" -- MENU PRINCIPAL -- ");
                 Console.WriteLine();
-                Console.WriteLine("1- Agregar productos  ");
-                Console.WriteLine("2- Mostrar todos los productos");
+                Console.WriteLine("1- Agregar PRODUCTOS  ");
+                Console.WriteLine("2- Mostrar todos los PRODUCTO");
+                Console.WriteLine("3- Mostrar PRODUCTO por ID");  // Falta  
+                Console.WriteLine("4- Dar de baja un PRODUCTO");  // Falta  
+                Console.WriteLine("5- Actualizar STOCK por ID");  // Falta  
                 Console.WriteLine();
                 Console.WriteLine("0- Para salir");
                 Console.WriteLine();
@@ -35,6 +38,9 @@ namespace Inventario
                         break;
                         
                         case "2" :prod.mostrarListadoProductos();
+                        break;
+
+                        case "3" :prod.mostarProductoPorId();
                         break;
 
                     default:

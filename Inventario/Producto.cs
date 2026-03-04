@@ -29,10 +29,7 @@ namespace Inventario
         {
         estado = true;
         }
-        public void SetContador(int valor)
-        {
-            Id= valor;
-        }
+
 
 
         public string Nombre
@@ -48,7 +45,7 @@ namespace Inventario
                     }
                     else if (value.Any(char.IsDigit))
                     {
-                     throw new Exception("Debe ingresar un nombre sin letras");   
+                     throw new Exception("Debe ingresar un nombre sin numeros");   
                     }
                     nombre= value;
                 }
