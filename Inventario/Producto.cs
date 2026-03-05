@@ -83,13 +83,16 @@ namespace Inventario
                 stock = value;
             }
         }
-
+        public override string ToString()
+        {
+            return $"ID:{Id} Nombre: {Nombre} Stock: {Stock} ";
+        }
 
         public bool Estado
         {
             get { return estado; }
 
-             private set {
+             set {
                 estado = value;
             }
         }

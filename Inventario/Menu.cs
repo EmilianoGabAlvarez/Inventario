@@ -27,6 +27,7 @@ namespace Inventario
                 Console.WriteLine("3- Mostrar PRODUCTO por ID");  
                 Console.WriteLine("4- Dar de baja un PRODUCTO");    
                 Console.WriteLine("5- Actualizar STOCK por ID");  
+                Console.WriteLine("6- Buscar por palabra");  
                 Console.WriteLine();
                 Console.WriteLine("0- Para salir");
                 Console.WriteLine();
@@ -47,6 +48,9 @@ namespace Inventario
                         break;
 
                         case "5" :prod.actualizarStockXid();
+                        break;
+
+                        case "6" :prod.buscarXpalabra();
                         break;
 
                     default:

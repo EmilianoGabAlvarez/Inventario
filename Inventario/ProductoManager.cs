@@ -359,6 +359,44 @@ namespace Inventario
             }
         }
 
+        public void buscarXpalabra()
+        {
+            while(true) 
+            {
+                try
+                {
+                    Console.WriteLine("Ingrese una palabra para iniciar la busqueda");
+                    string nombre= Console.ReadLine();
+                    if (nombre.Any(char.IsDigit))
+                    {
+                        Console.WriteLine("Debe ingresar una palabra sin numeros ni simbolos");
+                        continue;
+                    }
+                    var prod = _listaProductos.Where(p => p.Nombre.ToLower().Contains(nombre.ToLower())).ToList();
+                    if (prod.Count > 0)
+                    {
+                        Console.WriteLine($"Coincidencias para la palabra{nombre}");
+                        Console.WriteLine();
+                        foreach (var item in prod)
+                        {
+                            Console.WriteLine(item);
+                            Console.WriteLine();
+                        }
+                        return;
+                  
+                    }
+
+
+                }
+                catch (Exception)
+                {
+
+                    Console.WriteLine($""); ;
+                }    
+            }
+        }
+
+
     }
 }
 
