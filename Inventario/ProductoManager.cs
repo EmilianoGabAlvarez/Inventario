@@ -268,7 +268,7 @@ namespace Inventario
         }
         public bool cambiaEstado(Producto prod) 
         {
-                prod.estado = false;
+                prod.Estado = false;
                 return true;
             
         }
@@ -308,6 +308,56 @@ namespace Inventario
             }
         }
 
+        public void actualizarStockXid()
+        {
+            while (true)
+            {
+                try
+                {
+                Console.WriteLine("Ingrse el ID del PRODUCTO a a modificar STOCK");
+                    int num= int.Parse (Console.ReadLine());
+                    Producto prod=_listaProductos.Find (p=>p.Id==num);
+                    if(prod == null) 
+                    {
+                        Console.WriteLine("No se encontraron coincidencias para el ID ingresado");
+                        continue;
+                    }
+                    while (true)
+                    {
+                        try
+                        {
+                         Console.WriteLine("Ingrse la cantidad del PRODUCTO a modificar");
+                            int nuevostock=int.Parse (Console.ReadLine());
+                            if (nuevostock <= 0)
+                            {
+                                Console.WriteLine("Debe ingresar una cantidad positiva de productos");
+                                continue;
+                            }
+                            else 
+                            {
+                                prod.stock = prod.stock+nuevostock;
+                                GuardarDatos ();
+                                return;
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+                            Console.WriteLine("Debe ingresar solo numeros");
+                            continue;
+                        }
+
+                    }
+                }
+                catch (Exception)
+                {
+
+                    Console.WriteLine("Debe ingresar solo numeros");
+                    continue;
+                }
+                
+            }
+        }
 
     }
 }

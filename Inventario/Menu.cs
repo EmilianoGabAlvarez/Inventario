@@ -25,8 +25,8 @@ namespace Inventario
                 Console.WriteLine("1- Agregar PRODUCTOS  ");
                 Console.WriteLine("2- Mostrar todos los PRODUCTO");
                 Console.WriteLine("3- Mostrar PRODUCTO por ID");  
-                Console.WriteLine("4- Dar de baja un PRODUCTO");  // Falta  
-                Console.WriteLine("5- Actualizar STOCK por ID");  // Falta  
+                Console.WriteLine("4- Dar de baja un PRODUCTO");    
+                Console.WriteLine("5- Actualizar STOCK por ID");  
                 Console.WriteLine();
                 Console.WriteLine("0- Para salir");
                 Console.WriteLine();
@@ -41,6 +41,12 @@ namespace Inventario
                         break;
 
                         case "3" :prod.mostarProductoPorId();
+                        break;
+                        
+                        case "4" :prod.BajaxID();
+                        break;
+
+                        case "5" :prod.actualizarStockXid();
                         break;
 
                     default:

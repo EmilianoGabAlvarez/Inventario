@@ -89,13 +89,7 @@ namespace Inventario
         {
             get { return estado; }
 
-            private set
-            {
-
-                if (value == false || Stock < 0)
-                {
-                    throw new Exception("No se puede dar de baja un producto sin stock");
-                }
+             private set {
                 estado = value;
             }
         }
