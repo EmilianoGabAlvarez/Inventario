@@ -83,6 +83,8 @@ namespace Inventario
                 stock = value;
             }
         }
+
+
         public bool Estado
         {
             get { return estado; }

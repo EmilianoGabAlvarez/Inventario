@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Metadata.Ecma335;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Inventario
@@ -211,11 +213,14 @@ namespace Inventario
         {
             foreach (var item in _listaProductos)
             {
-                Console.WriteLine("ID: "+item.Id);
-                Console.WriteLine("Nombre: "+ item.Nombre); 
-                Console.WriteLine("Precio: "+ item.Precio); 
-                Console.WriteLine("Stock: "+ item.Stock);
-                Console.WriteLine();
+                if (item.Estado)
+                {
+                    Console.WriteLine("ID: " + item.Id);
+                    Console.WriteLine("Nombre: " + item.Nombre);
+                    Console.WriteLine("Precio: " + item.Precio);
+                    Console.WriteLine("Stock: " + item.Stock);
+                    Console.WriteLine();
+                }
             }
         }
 
@@ -261,6 +266,48 @@ namespace Inventario
                 }
             }
         }
+        public bool cambiaEstado(Producto prod) 
+        {
+                prod.estado = false;
+                return true;
+            
+        }
+        public void BajaxID() 
+        {
+            mostrarListadoProductos();
+            Console.WriteLine();
+            while (true) 
+            {
+                try
+                {
+                    Console.WriteLine("Ingrese el ID de PRODUCTO que quiere dar de baja");
+                    int num=int.Parse (Console.ReadLine());
+                    Producto prod=_listaProductos.Find(p=>p.Id==num);
+                    if (prod == null) 
+                    {
+                        Console.WriteLine("No se encontraron coincidencias con el ID ingresado, intente nuevamente");
+                        continue;
+                    }
+                    if (cambiaEstado(prod))
+                    {
+                        GuardarDatos();
+                        break;
+                    }
+                    else 
+                    {
+                        Console.WriteLine("El producto ya estaba dado de baja anteriormente");
+                        continue;
+                    }
+                }
+                catch (Exception)
+                {
+
+                    Console.WriteLine("Debe ingresar un ID (Solo los id de la lista)");
+                    continue;   
+                }
+            }
+        }
+
 
     }
 }
