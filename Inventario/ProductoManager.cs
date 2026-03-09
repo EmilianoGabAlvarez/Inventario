@@ -406,6 +406,7 @@ namespace Inventario
                     Console.WriteLine("Ingres el minimo de stock a buscar ");
                     int minimo=int.Parse(Console.ReadLine());
                     Console.Clear();
+                    bool encontro=false;
                     if (minimo < 0)
                     {
                         Console.WriteLine("Debe ingresarse un numero de STOCK positivo");
@@ -422,12 +423,25 @@ namespace Inventario
                     Console.WriteLine();
                     foreach (var item in _listaProductos)
                     {
-                        if (item.Stock <= minimo)
+                        if (item.Stock <= minimo && item.Estado)
                         {
                             Console.WriteLine(item);
+                            encontro = true;
                             Console.WriteLine();
+
+
                         }
+
                     }
+
+
+                        if (!encontro)
+                        {
+                        Console.WriteLine($"No se encontraron productos con menos de {minimo} unidades");
+                        }
+             
+                    
+                    Console.WriteLine("-----------------------------------");
                     Console.WriteLine("Presione una tecla para continuar");
                     Console.ReadKey();
                     Console.Clear();
