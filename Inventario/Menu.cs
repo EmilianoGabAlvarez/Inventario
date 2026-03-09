@@ -28,6 +28,7 @@ namespace Inventario
                 Console.WriteLine("4- Dar de baja un PRODUCTO");    
                 Console.WriteLine("5- Actualizar STOCK por ID");  
                 Console.WriteLine("6- Buscar por palabra");  
+                Console.WriteLine("7- Reporte de pocas unidades");  
                 Console.WriteLine();
                 Console.WriteLine("0- Para salir");
                 Console.WriteLine();
@@ -51,6 +52,9 @@ namespace Inventario
                         break;
 
                         case "6" :prod.buscarXpalabra();
+                        break;
+
+                        case "7" :prod.RmostrarBajoStock();
                         break;
 
                     default:

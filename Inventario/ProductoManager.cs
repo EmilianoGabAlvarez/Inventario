@@ -55,7 +55,7 @@ namespace Inventario
                 {
                     Console.WriteLine("\nℹ️ No se encontró archivo previo. Se iniciará un inventario vacío");
                 }
-                    
+
             }
             catch (Exception ex)
             {
@@ -152,7 +152,7 @@ namespace Inventario
             int nuevoId;
             CargarDatos();
             if (_listaProductos.Count > 0) {
-               nuevoId = _listaProductos.Max(x => x.Id);
+                nuevoId = _listaProductos.Max(x => x.Id);
             }
             else
             {
@@ -162,7 +162,7 @@ namespace Inventario
             string guardaNombre = AgregarNombre();
             decimal guardarPrecio = AgregarPrecio();
             int guardarStock = AgregarStock();
-            Producto prod = new Producto(id, guardaNombre,guardarPrecio,guardarStock);
+            Producto prod = new Producto(id, guardaNombre, guardarPrecio, guardarStock);
             _listaProductos.Add(prod);
             Console.WriteLine();
             Console.WriteLine("Producto cargado exitosamente");
@@ -173,7 +173,7 @@ namespace Inventario
         public void AgregarListadoProductos()
         {
             int cant = 0;
-            
+
             while (true)
             {
                 try
@@ -228,8 +228,8 @@ namespace Inventario
         public void mostrarXProducto(Producto p)
         {
             Console.WriteLine("ID: " + p.Id);
-            Console.WriteLine("Nombre: " +p.Nombre);
-            Console.WriteLine("Precio: " +p.Precio);
+            Console.WriteLine("Nombre: " + p.Nombre);
+            Console.WriteLine("Precio: " + p.Precio);
             Console.WriteLine("Stock: " + p.Stock);
             Console.WriteLine();
         }
@@ -241,8 +241,8 @@ namespace Inventario
                 try
                 {
                     Console.WriteLine("Ingrese el ID del producto a buscar");
-                    int num=int.Parse(Console.ReadLine());
-                    Producto prod=_listaProductos.Find( p=> p.Id==num);
+                    int num = int.Parse(Console.ReadLine());
+                    Producto prod = _listaProductos.Find(p => p.Id == num);
                     if (num == null)
                     {
                         Console.WriteLine("No se encontraron coincidencias con ese numero de ID");
@@ -266,24 +266,24 @@ namespace Inventario
                 }
             }
         }
-        public bool cambiaEstado(Producto prod) 
+        public bool cambiaEstado(Producto prod)
         {
-                prod.Estado = false;
-                return true;
-            
+            prod.Estado = false;
+            return true;
+
         }
-        public void BajaxID() 
+        public void BajaxID()
         {
             mostrarListadoProductos();
             Console.WriteLine();
-            while (true) 
+            while (true)
             {
                 try
                 {
                     Console.WriteLine("Ingrese el ID de PRODUCTO que quiere dar de baja");
-                    int num=int.Parse (Console.ReadLine());
-                    Producto prod=_listaProductos.Find(p=>p.Id==num);
-                    if (prod == null) 
+                    int num = int.Parse(Console.ReadLine());
+                    Producto prod = _listaProductos.Find(p => p.Id == num);
+                    if (prod == null)
                     {
                         Console.WriteLine("No se encontraron coincidencias con el ID ingresado, intente nuevamente");
                         continue;
@@ -293,7 +293,7 @@ namespace Inventario
                         GuardarDatos();
                         break;
                     }
-                    else 
+                    else
                     {
                         Console.WriteLine("El producto ya estaba dado de baja anteriormente");
                         continue;
@@ -303,7 +303,7 @@ namespace Inventario
                 {
 
                     Console.WriteLine("Debe ingresar un ID (Solo los id de la lista)");
-                    continue;   
+                    continue;
                 }
             }
         }
@@ -314,10 +314,10 @@ namespace Inventario
             {
                 try
                 {
-                Console.WriteLine("Ingrse el ID del PRODUCTO a a modificar STOCK");
-                    int num= int.Parse (Console.ReadLine());
-                    Producto prod=_listaProductos.Find (p=>p.Id==num);
-                    if(prod == null) 
+                    Console.WriteLine("Ingrse el ID del PRODUCTO a a modificar STOCK");
+                    int num = int.Parse(Console.ReadLine());
+                    Producto prod = _listaProductos.Find(p => p.Id == num);
+                    if (prod == null)
                     {
                         Console.WriteLine("No se encontraron coincidencias para el ID ingresado");
                         continue;
@@ -326,17 +326,17 @@ namespace Inventario
                     {
                         try
                         {
-                         Console.WriteLine("Ingrse la cantidad del PRODUCTO a modificar");
-                            int nuevostock=int.Parse (Console.ReadLine());
+                            Console.WriteLine("Ingrse la cantidad del PRODUCTO a modificar");
+                            int nuevostock = int.Parse(Console.ReadLine());
                             if (nuevostock <= 0)
                             {
                                 Console.WriteLine("Debe ingresar una cantidad positiva de productos");
                                 continue;
                             }
-                            else 
+                            else
                             {
-                                prod.stock = prod.stock+nuevostock;
-                                GuardarDatos ();
+                                prod.stock = prod.stock + nuevostock;
+                                GuardarDatos();
                                 return;
                             }
                         }
@@ -355,18 +355,18 @@ namespace Inventario
                     Console.WriteLine("Debe ingresar solo numeros");
                     continue;
                 }
-                
+
             }
         }
 
         public void buscarXpalabra()
         {
-            while(true) 
+            while (true)
             {
                 try
                 {
                     Console.WriteLine("Ingrese una palabra para iniciar la busqueda");
-                    string nombre= Console.ReadLine();
+                    string nombre = Console.ReadLine();
                     if (nombre.Any(char.IsDigit))
                     {
                         Console.WriteLine("Debe ingresar una palabra sin numeros ni simbolos");
@@ -383,7 +383,7 @@ namespace Inventario
                             Console.WriteLine();
                         }
                         return;
-                  
+
                     }
 
 
@@ -392,10 +392,55 @@ namespace Inventario
                 {
 
                     Console.WriteLine($""); ;
-                }    
+                }
             }
         }
 
+        public void RmostrarBajoStock()
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.Clear();
+                    Console.WriteLine("Ingres el minimo de stock a buscar ");
+                    int minimo=int.Parse(Console.ReadLine());
+                    Console.Clear();
+                    if (minimo < 0)
+                    {
+                        Console.WriteLine("Debe ingresarse un numero de STOCK positivo");
+                        continue;
+                    }
+                    else if (minimo == 0) 
+                    {
+                        Console.WriteLine("No puede ser 0 el STOCK buscado");
+                        continue;
+                    }
+                    Console.WriteLine("-----------------------------------");
+                    Console.WriteLine($"Productos con menos de {minimo} unidades");
+                    Console.WriteLine("-----------------------------------");
+                    Console.WriteLine();
+                    foreach (var item in _listaProductos)
+                    {
+                        if (item.Stock <= minimo)
+                        {
+                            Console.WriteLine(item);
+                            Console.WriteLine();
+                        }
+                    }
+                    Console.WriteLine("Presione una tecla para continuar");
+                    Console.ReadKey();
+                    Console.Clear();
+                    return;
+                }
+                catch (Exception)
+                {
+
+                    Console.WriteLine("Solo debe ingresarse un numero minimo de stock");
+                    continue;
+                }
+            }
+        }
 
     }
 }
