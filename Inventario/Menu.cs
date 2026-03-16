@@ -16,10 +16,11 @@ namespace Inventario
         int guardados=prod.CantidadGuardada();
             Console.WriteLine($"{guardados} Es la cantidad de productos guardados");
             Console.WriteLine();
+            MenuReporte menuReportes=new MenuReporte(prod);
             
             while (true)
             {
-               
+                Console.Clear();
                 Console.WriteLine(" -- MENU PRINCIPAL -- ");
                 Console.WriteLine();
                 Console.WriteLine("1- Agregar PRODUCTOS  ");
@@ -28,7 +29,7 @@ namespace Inventario
                 Console.WriteLine("4- Dar de baja un PRODUCTO");    
                 Console.WriteLine("5- Actualizar STOCK por ID");  
                 Console.WriteLine("6- Buscar por palabra");  
-                Console.WriteLine("7- Reporte de pocas unidades");  
+                Console.WriteLine("7- Menu reportes");  
                 Console.WriteLine();
                 Console.WriteLine("0- Para salir");
                 Console.WriteLine();
@@ -54,7 +55,7 @@ namespace Inventario
                         case "6" :prod.buscarXpalabra();
                         break;
 
-                        case "7" :prod.RmostrarBajoStock();
+                        case "7" :menuReportes.mostrarMenu();
                         break;
 
                     default:

@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Inventario
 {
@@ -455,7 +456,55 @@ namespace Inventario
                 }
             }
         }
+        public void RmostrarValorTotalxID()
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("Ingrese el ID del PRODUCTO a calcular el reporte");
+                    int numero = int.Parse(Console.ReadLine());
+                    if (numero < 0)
+                    {
+                        Console.WriteLine("Debe ingresar un numero de ID positivo");
+                        continue;
+                    }
+                    else if (numero == 0)
+                    {
+                        Console.WriteLine("Debe ser mayor a 0");
+                        continue;
+                    }
+                    var buscado = _listaProductos.Find(p => p.Id == numero);
+                    if (buscado == null)
+                    {
+                        Console.WriteLine("No se encontraron coincidencias para el ID ingresado");
+                        continue;
+                    }
+                    else if (buscado.estado)
+                    {
+                        decimal sumaTotal = (buscado.Stock * buscado.Precio);
+                        Console.Clear();
+                        Console.WriteLine("Importe total almacenado para el producto " + buscado.Nombre);
+                        Console.WriteLine();
+                        Console.WriteLine("$" + sumaTotal);
+                        Console.ReadKey ();
+                        return;
 
+                    }
+                    else
+                    {
+                        Console.WriteLine("El producto se encuentra dado de baja");
+                        continue;
+                    }
+                }
+                catch (Exception)
+                {
+
+                    Console.WriteLine("Error: Debe ingresar solo un numero de ID");
+                    continue;
+                }
+            }
+        }
     }
 }
 
