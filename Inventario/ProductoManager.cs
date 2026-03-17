@@ -505,6 +505,44 @@ namespace Inventario
                 }
             }
         }
+
+        public void RMostrarDadoDebaja()
+        {
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine(" --Productos daados de baja-- ");
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine();
+            int cuentabaja = 0;
+            foreach (var item in _listaProductos)
+            {
+                if (item.Estado==false)
+                {
+                    Console.WriteLine(item.ToString());
+                    cuentabaja++;
+                }
+
+            }
+            if( cuentabaja == 0)
+            {
+                Console.WriteLine("No se encontraron productos con baja");
+            }
+        }
+
+        public void mostrarValorTotalGeneral()
+        {
+            Console.WriteLine("-----------------------");
+            Console.WriteLine("Valor total del deposito en mercaderia");
+            Console.WriteLine("-----------------------");
+            Console.WriteLine();
+
+            decimal numero = _listaProductos.Where(p => p.Estado).Sum(p => p.Stock * p.precio);
+
+            Console.WriteLine($"El valor total de la mercaderia es de{numero} ");
+            Console.WriteLine();
+            Console.WriteLine("Precione una tecla para volver");
+            Console.ReadKey();
+
+        } 
     }
 }
 

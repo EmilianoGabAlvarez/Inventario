@@ -6,11 +6,6 @@
         {
             Menu menu = new Menu();
             menu.menu();
-            // ProductoManager prodM = new ProductoManager();
-            //prodM.CargarDatos();
-            //prodM.CantidadGuardada();
-            //prodM.AgregarListadoProductos();
-            //prodM.mostrarListadoProductos();
         }
     }
 }

@@ -24,6 +24,7 @@ namespace Inventario
                 Console.WriteLine();
                 Console.WriteLine("1- Reporte valor de mercaderia por ID");
                 Console.WriteLine("2- Reporte de pocas unidades");
+                Console.WriteLine("3- Reporte de productos dado de baja");
                 Console.WriteLine("0- Salir del menu reportes");
 
 
@@ -37,7 +38,7 @@ namespace Inventario
                         _manager.RmostrarBajoStock();
                         break;
 
-                    case "3":
+                    case "3":_manager.RMostrarDadoDebaja();
                         break;
 
                     case "0":

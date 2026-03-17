@@ -37,7 +37,7 @@ namespace Inventario
 
                 switch (opcion)
                 {
-                    case "1":prod.AgregarListadoProductos();
+                        case "1":prod.AgregarListadoProductos();
                         break;
                         
                         case "2" :prod.mostrarListadoProductos();
